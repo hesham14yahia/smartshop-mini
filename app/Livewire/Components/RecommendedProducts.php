@@ -20,7 +20,7 @@ class RecommendedProducts extends Component
     public function render()
     {
         return view('livewire.products.recommended', [
-            'products' => $this->recommended
+            'products' => $this->recommended,
         ]);
     }
 }

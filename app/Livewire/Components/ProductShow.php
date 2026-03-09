@@ -6,7 +6,6 @@ use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-
 #[Layout('layouts.app')]
 class ProductShow extends Component
 {

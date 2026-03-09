@@ -22,14 +22,14 @@ class AiRecommendationService
         foreach ($products as $p) {
             $prompt .= "- {$p->name}: {$p->description}\n from this list:\n";
 
-            $prompt .= implode("\n", array_map(fn($p) => "- {$p->name}: {$p->description}", $products->all()));
+            $prompt .= implode("\n", array_map(fn ($p) => "- {$p->name}: {$p->description}", $products->all()));
 
-            }
-            $prompt .= "return only product names \n";
+        }
+        $prompt .= "return only product names \n";
 
         try {
             return Cache::remember(
-                'ai_recommendations_' . md5($prompt),
+                'ai_recommendations_'.md5($prompt),
                 now()->addMinutes(2),
                 function () use ($prompt, $limit) {
 

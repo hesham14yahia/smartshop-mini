@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Components;
 
+use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Product;
 
 #[Layout('layouts.app')]
 class ProductsGrid extends Component
@@ -28,7 +28,7 @@ class ProductsGrid extends Component
             ->paginate(12);
 
         return view('livewire.products.grid', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 }
