@@ -11,7 +11,7 @@
             <div class="text-2xl font-bold mb-6">
                 ${{ $product->price }}
             </div>
-            <button wire:click="addToCart" class="bg-black text-white px-6 py-3 rounded-lg">
+            <button wire:click="addToCart({{ $product->id }})" class="bg-black text-white px-6 py-3 rounded-lg">
                 Add to Cart
             </button>
         </div>

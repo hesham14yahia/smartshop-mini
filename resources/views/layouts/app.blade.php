@@ -34,5 +34,13 @@
             </main>
         </div>
         @livewireScripts
+        <script>
+            window.addEventListener('redirect', event => {
+                window.location.href = event.detail.url;
+            });
+            window.addEventListener('notify', event => {
+                alert(event.detail[0].message);
+            });
+        </script>
     </body>
 </html>

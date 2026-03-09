@@ -10,12 +10,24 @@ use Livewire\Component;
 class ProductShow extends Component
 {
     public Product $product;
+    public $cart = [];
 
     public function mount(Product $product)
     {
         $this->product = $product;
 
         $this->trackViewedProduct();
+    }
+
+    public function addToCart()
+    {
+        $cart = session()->get('cart', []);
+        $cart[$this->product->id] = ($cart[$this->product->id] ?? 0) + 1;
+        session(['cart' => $cart]);
+
+        $this->dispatch('notify', [
+            'message' => $this->product->name . ' added to cart!',
+        ]);
     }
 
     protected function trackViewedProduct()
