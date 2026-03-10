@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Components\ProductsCart;
 use App\Livewire\Components\ProductsGrid;
 use App\Livewire\Components\ProductShow;
 use App\Livewire\Components\RecommendedProducts;
@@ -22,6 +23,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/recommended-products', RecommendedProducts::class)
         ->name('products.recommended');
+
+    Route::get('/cart-products', ProductsCart::class)
+        ->name('products.cart');
+
+    Route::get('/logout', function () {
+        auth()->logout();
+        return redirect('/');
+    })->name('logout');
 });
 
 require __DIR__.'/auth.php';

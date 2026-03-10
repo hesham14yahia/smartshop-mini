@@ -4,8 +4,9 @@ namespace App\Livewire\Actions;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Livewire\Volt\Component;
 
-class Logout
+class Logout extends Component
 {
     /**
      * Log the current user out of the application.
@@ -16,5 +17,7 @@ class Logout
 
         Session::invalidate();
         Session::regenerateToken();
+
+        $this->redirectIntended('/');
     }
 }
