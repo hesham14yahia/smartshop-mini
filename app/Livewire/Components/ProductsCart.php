@@ -17,22 +17,16 @@ class ProductsCart extends Component
             return;
         }
 
-        // Example: create order (optional)
-        // Order::create([...]);
-
-        // Clear cart
         session()->forget('cart');
 
-        // Update UI
         $this->products = collect();
         $this->totalPrice = 0;
 
         session()->flash('success', 'Order confirmed 🎉');
 
-        // update navbar cart counter
         $this->dispatch('cart-updated', cartCount: 0);
     }
-    
+
     public function render()
     {
         $products = Product::whereIn('id', session()->get('cart', []))->get();
