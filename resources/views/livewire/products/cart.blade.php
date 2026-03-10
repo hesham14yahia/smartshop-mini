@@ -2,6 +2,12 @@
     <h2 class="text-2xl font-bold mb-8">
         Cart Products
     </h2>
+
+    @if (session()->has('success'))
+        <div class="bg-green-100 text-green-800 p-4 rounded mb-6">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="grid ">
         @foreach ($products as $product)
             <div class="bg-white rounded-xl shadow p-4 hover:shadow-lg transition mt-4">
@@ -30,7 +36,19 @@
 
             </div>
         @endforeach
-        {{-- total price --}}
-        <p style="font-size: 2rem" class="mt-2">Total Price: ${{ $totalPrice }}</p>
+
+        {{-- Total --}}
+        <p class="text-2xl mt-6">
+            Total Price: ${{ $totalPrice }}
+        </p>
+
+        {{-- Checkout Button --}}
+        @if(count($products) > 0)
+            <button
+                wire:click="checkout"
+                class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                Checkout
+            </button>
+        @endif
     </div>
 </div>
