@@ -45,6 +45,7 @@ A mini e-commerce application built with Laravel, featuring AI-powered product r
      ```bash
      php artisan key:generate
      ```
+    - Add Gemini Api Key `GEMINI_API_KEY` in `.env`
 
 5. **Database Setup**:
    ```bash
