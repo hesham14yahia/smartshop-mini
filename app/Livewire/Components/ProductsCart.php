@@ -29,7 +29,7 @@ class ProductsCart extends Component
 
     public function render()
     {
-        $products = Product::whereIn('id', session()->get('cart', []))->get();
+        $products = Product::whereIn('id', array_keys(session()->get('cart', [])))->get();
 
         $totalPrice = $products->sum(function ($product) {
             return $product->price;
